@@ -221,13 +221,13 @@ export type B3MenuItemVariants = VariantProps<typeof menuItemVariants>;
 
 
 ```angular-ts title="menu-content.directive.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { CdkMenu } from '@angular/cdk/menu';
 import { computed, Directive, input } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { menuContentVariants } from './menu.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Directive({
   selector: '[b3-menu-content]',
@@ -248,14 +248,14 @@ export class B3MenuContentDirective {
 
 
 ```angular-ts title="menu-item.directive.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import type { BooleanInput } from '@angular/cdk/coercion';
 import { CdkMenuItem } from '@angular/cdk/menu';
 import { booleanAttribute, computed, Directive, effect, inject, input, signal, untracked } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { menuItemVariants, type B3MenuItemVariants } from './menu.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Directive({
   selector: 'button[b3-menu-item], [b3-menu-item]',

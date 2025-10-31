@@ -1,15 +1,15 @@
 ```bash tab="npm" copyButton
-npx @ngzard/ui add menubar
+npx @ngb3/ui add menubar
 ```
 
 ```bash tab="pnpm"
-pnpm dlx @ngzard/ui add menubar
+pnpm dlx @ngb3/ui add menubar
 ```
 
 ```bash tab="yarn"
-yarn dlx @ngzard/ui add menubar
+yarn dlx @ngb3/ui add menubar
 ```
 
 ```bash tab="bun"
-bunx @ngzard/ui add menubar
+bunx @ngb3/ui add menubar
 ```

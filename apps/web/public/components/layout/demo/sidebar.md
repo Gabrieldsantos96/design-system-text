@@ -21,17 +21,7 @@ interface MenuItem {
 @Component({
   selector: 'b3-demo-layout-collapsible',
   standalone: true,
-  imports: [
-    LayoutModule,
-    B3ButtonComponent,
-    B3BreadcrumbModule,
-    B3MenuModule,
-    B3SkeletonComponent,
-    B3TooltipModule,
-    B3DividerComponent,
-    B3AvatarComponent,
-    B3IconComponent,
-  ],
+  imports: [LayoutModule, B3ButtonComponent, B3BreadcrumbModule, B3MenuModule, B3SkeletonComponent, B3TooltipModule, B3DividerComponent, B3AvatarComponent, B3IconComponent],
   template: `
     <!-- border and rounded-md are just for the demo purpose -->
     <b3-layout class="border rounded-md overflow-hidden">
@@ -105,12 +95,12 @@ interface MenuItem {
               zPlacement="rightBottom"
               [class]="'flex items-center justify-center gap-2 cursor-pointer rounded-md hover:bg-accent ' + (sidebarCollapsed() ? 'p-0 m-2' : 'p-2')"
             >
-              <b3-avatar zSrc="https://zardui.com/images/avatar/imgs/avatar_image.jpg" zAlt="B3 UI" />
+              <b3-avatar zSrc="https://b3-design-system.com/images/avatar/imgs/avatar_image.jpg" zAlt="B3 UI" />
 
               @if (!sidebarCollapsed()) {
                 <div>
-                  <span class="font-medium">zardui</span>
-                  <div class="text-xs">test&#64;zardui.com</div>
+                  <span class="font-medium">b3-design-system</span>
+                  <div class="text-xs">test&#64;b3-design-system.com</div>
                 </div>
 
                 <b3-icon zType="chevrons-up-down" class="ml-auto" />

@@ -4,14 +4,14 @@
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, type TemplateRef, viewChild, ViewEncapsulation } from '@angular/core';
 
+import type { ClassValue } from 'clsx';
+
+import { datePickerVariants, type B3DatePickerVariants } from './date-picker.variants';
 import { mergeClasses } from '../../shared/utils/utils';
 import { B3ButtonComponent } from '../button/button.component';
 import { B3CalendarComponent } from '../calendar/calendar.component';
 import { B3IconComponent } from '../icon/icon.component';
 import { B3PopoverComponent, B3PopoverDirective } from '../popover/popover.component';
-import { datePickerVariants, type B3DatePickerVariants } from './date-picker.variants';
-
-import type { ClassValue } from 'clsx';
 
 const HEIGHT_BY_SIZE: Record<NonNullable<B3DatePickerVariants['zSize']>, string> = {
   sm: 'h-8',

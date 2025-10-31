@@ -1,14 +1,14 @@
 ```angular-ts showLineNumbers copyButton
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal, ViewEncapsulation } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { B3SelectItemComponent } from '../../select/select-item.component';
-import { B3CheckboxComponent } from '../../checkbox/checkbox.component';
-import { B3SelectComponent } from '../../select/select.component';
 import { B3ButtonComponent } from '../../button/button.component';
+import { B3CheckboxComponent } from '../../checkbox/checkbox.component';
 import { B3InputDirective } from '../../input/input.directive';
+import { B3SelectItemComponent } from '../../select/select-item.component';
+import { B3SelectComponent } from '../../select/select.component';
 import { B3FormModule } from '../form.module';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface FormData {
   firstName: string;
@@ -23,7 +23,7 @@ interface FormData {
 }
 
 @Component({
-  selector: 'zard-demo-form-complex',
+  selector: 'b3-demo-form-complex',
   standalone: true,
   imports: [ReactiveFormsModule, B3ButtonComponent, B3InputDirective, B3CheckboxComponent, B3SelectComponent, B3SelectItemComponent, B3FormModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

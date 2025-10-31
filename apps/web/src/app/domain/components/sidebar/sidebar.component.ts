@@ -23,7 +23,7 @@ import { SIDEBAR_PATHS } from '@b3/shared/constants/routes.constant';
                     zFull
                     [routerLink]="path.path"
                     class="justify-between px-2 py-1 font-normal max-w-48"
-                    routerLinkActive="bg-accent font-semibold"
+                    routerLinkActive="bg-accent font-semibold text-primary-foreground"
                     [routerLinkActiveOptions]="{ exact: true }"
                   >
                     {{ path.name }}

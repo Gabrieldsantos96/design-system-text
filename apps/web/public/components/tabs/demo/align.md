@@ -9,11 +9,11 @@ import { type zAlign, B3TabComponent, B3TabGroupComponent } from '../tabs.compon
   standalone: true,
   imports: [B3TabComponent, B3TabGroupComponent, B3ButtonComponent],
   template: `
-    <div class="h-[300px] w-full">
+    <div class="w-full h-[300px]">
       <b3-tab-group [zAlignTabs]="zAlignTabs">
         <b3-tab label="First">
-          <p class="w-full text-center">zAlignTabs: {{ zAlignTabs }}</p>
-          <div class="mt-4 flex items-center justify-center gap-2">
+          <p class="text-center w-full">zAlignTabs: {{ zAlignTabs }}</p>
+          <div class="flex justify-center items-center gap-2 mt-4">
             <button b3-button zType="ghost" (click)="zAlignTabs = 'start'">Start</button>
             <button b3-button zType="ghost" (click)="zAlignTabs = 'center'">Center</button>
             <button b3-button zType="ghost" (click)="zAlignTabs = 'end'">End</button>

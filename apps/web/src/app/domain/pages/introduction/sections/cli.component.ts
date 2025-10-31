@@ -21,7 +21,7 @@ interface CLIFeature {
         <div class="flex flex-col gap-4">
           <div class="flex items-center gap-2">
             <div class="flex h-6 w-6 items-center justify-center rounded bg-primary text-primary-foreground text-xs font-mono">$</div>
-            <p class="font-mono text-sm">npx &#64;ngzard/ui add button</p>
+            <p class="font-mono text-sm">npx &#64;ngb3/ui add button</p>
           </div>
           <div class="pl-8 text-sm text-muted-foreground">
             ✓ Ready to install 1 component(s) and 1 dependencies. Proceed? … yes<br />

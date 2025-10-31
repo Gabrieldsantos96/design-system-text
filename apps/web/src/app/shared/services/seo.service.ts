@@ -26,7 +26,7 @@ export class SeoService {
   private readonly defaultImage = 'https://zardui.com/site/og-image.png';
 
   setMetaTags(config: SeoConfig): void {
-    const fullTitle = `${config.title} - zard/ui`;
+    const fullTitle = `${config.title} - b3/ui`;
     const url = config.url ? `${this.baseUrl}${config.url}` : this.baseUrl;
     const image = config.image ? (config.image.startsWith('http') ? config.image : `${this.baseUrl}/og/${config.image}`) : this.defaultImage;
     const keywords = config.keywords || this.generateDefaultKeywords(config.title);
@@ -129,7 +129,7 @@ export class SeoService {
       `zard-ui ${componentName}`,
       `zard ${componentName}`,
       `zardui ${componentName}`,
-      `zard/ui ${componentName}`,
+      `b3/ui ${componentName}`,
       `shadcn/ui angular ${componentName}`,
       `Angular ${displayName} component`,
       `${displayName} component`,

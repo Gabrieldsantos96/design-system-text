@@ -7,7 +7,7 @@ import { B3IconComponent } from '../../icon/icon.component';
 import { B3MenuModule } from '../menu.module';
 
 @Component({
-  selector: 'zard-demo-menu-default',
+  selector: 'b3-demo-menu-default',
   standalone: true,
   imports: [B3MenuModule, B3ButtonComponent, B3DividerComponent, B3IconComponent],
   template: `

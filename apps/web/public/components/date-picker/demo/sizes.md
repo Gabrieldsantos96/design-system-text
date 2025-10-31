@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { B3DatePickerComponent } from '../date-picker.component';
 
 @Component({
-  selector: 'zard-demo-date-picker-sizes',
+  selector: 'b3-demo-date-picker-sizes',
   standalone: true,
   imports: [B3DatePickerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,

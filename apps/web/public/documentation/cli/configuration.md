@@ -1,6 +1,6 @@
 ## Configuration
 
-The CLI stores configuration in `components.json` in your project root. This file is created automatically when you run `npx @ngzard/ui init`.
+The CLI stores configuration in `components.json` in your project root. This file is created automatically when you run `npx @ngb3/ui init`.
 
 ### Default Configuration
 

@@ -23,7 +23,7 @@ export class ChangeLogPage implements OnInit {
   private readonly changelogService = inject(ChangelogService);
   private readonly seoService = inject(SeoService);
 
-  readonly title = 'Changelog - zard/ui';
+  readonly title = 'Changelog - b3/ui';
   activeAnchor?: string;
 
   readonly entries = signal<ChangelogEntry[]>([]);

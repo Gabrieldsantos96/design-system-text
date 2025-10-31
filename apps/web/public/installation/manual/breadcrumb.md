@@ -3,11 +3,9 @@
 ```angular-ts title="breadcrumb.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, contentChildren, effect, input, signal, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 import type { ClassValue } from 'clsx';
 
-import { mergeClasses } from '../../shared/utils/utils';
-import { B3StringTemplateOutletDirective } from '../core/directives/string-template-outlet/string-template-outlet.directive';
-import { B3IconComponent } from '../icon/icon.component';
 import {
   breadcrumbEllipsisVariants,
   breadcrumbItemVariants,
@@ -16,6 +14,9 @@ import {
   type B3BreadcrumbEllipsisVariants,
   type B3BreadcrumbVariants,
 } from './breadcrumb.variants';
+import { mergeClasses } from '../../shared/utils/utils';
+import { B3StringTemplateOutletDirective } from '../core/directives/string-template-outlet/string-template-outlet.directive';
+import { B3IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'b3-breadcrumb-item, [b3-breadcrumb-item]',

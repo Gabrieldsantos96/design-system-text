@@ -1,12 +1,12 @@
 ```angular-ts showLineNumbers copyButton
-import { toast } from 'ngx-sonner';
-
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
+import { toast } from 'ngx-sonner';
 
 import { B3ButtonComponent } from '../../button/button.component';
 
 @Component({
-  selector: 'zard-demo-toast-position',
+  selector: 'b3-demo-toast-position',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [B3ButtonComponent],

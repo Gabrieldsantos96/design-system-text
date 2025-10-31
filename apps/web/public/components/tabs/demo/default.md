@@ -8,7 +8,7 @@ import { B3TabComponent, B3TabGroupComponent } from '../tabs.component';
   standalone: true,
   imports: [B3TabComponent, B3TabGroupComponent],
   template: `
-    <div class="h-[300px] w-full">
+    <div class="w-full h-[300px]">
       <b3-tab-group>
         <b3-tab label="First">
           <p>Is the default tab component</p>

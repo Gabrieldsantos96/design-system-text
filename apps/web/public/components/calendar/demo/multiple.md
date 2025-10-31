@@ -11,7 +11,7 @@ import { B3CalendarComponent } from '../calendar.component';
     <div class="space-y-4">
       <b3-calendar zMode="multiple" [(value)]="selectedDates" (dateChange)="onDateChange($event)" />
 
-      <div class="text-muted-foreground mt-2 text-sm">
+      <div class="text-sm text-muted-foreground mt-2">
         <p class="font-medium">Selected ({{ selectedDates()?.length ?? 0 }}) date(s).</p>
       </div>
     </div>

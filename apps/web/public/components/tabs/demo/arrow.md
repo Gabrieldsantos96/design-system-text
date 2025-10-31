@@ -9,9 +9,9 @@ import { B3TabComponent, B3TabGroupComponent } from '../tabs.component';
   standalone: true,
   imports: [B3TabComponent, B3TabGroupComponent, B3ButtonComponent],
   template: `
-    <div class="h-[300px] w-full">
-      <div class="mb-4 text-sm">
-        <div class="mt-4 flex items-center justify-center gap-2">
+    <div class="w-full h-[300px]">
+      <div class="text-sm mb-4">
+        <div class="flex justify-center items-center gap-2 mt-4">
           <button b3-button zType="ghost" type="button" [attr.aria-pressed]="showArrow" (click)="showArrow = !showArrow">{{ showArrow ? 'Hide' : 'Show' }} Arrows</button>
         </div>
       </div>

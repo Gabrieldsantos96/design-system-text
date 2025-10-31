@@ -2,13 +2,13 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { generateId } from '../../../shared/utils/utils';
 import { B3ButtonComponent } from '../../button/button.component';
 import { B3InputDirective } from '../../input/input.directive';
-import { generateId } from '../../../shared/utils/utils';
 import { B3FormModule } from '../form.module';
 
 @Component({
-  selector: 'zard-demo-form-default',
+  selector: 'b3-demo-form-default',
   standalone: true,
   imports: [FormsModule, B3ButtonComponent, B3InputDirective, B3FormModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

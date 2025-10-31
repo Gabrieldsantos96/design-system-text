@@ -15,33 +15,33 @@ import { ZARD_ICONS } from '../icons';
   standalone: true,
   imports: [CommonModule, B3IconComponent, B3InputDirective, B3ButtonComponent, B3EmptyComponent],
   template: `
-    <div class="flex w-full flex-col gap-4">
+    <div class="flex flex-col gap-4 w-full">
       <div class="flex flex-col gap-2">
         <div class="relative">
           <input b3-input type="text" placeholder="Search icons..." [value]="searchQuery()" (input)="onSearchChange($event)" class="w-full" />
-          <b3-icon zType="search" class="text-muted-foreground pointer-events-none absolute top-1/2 right-3 -translate-y-1/2" />
+          <b3-icon zType="search" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
         </div>
-        <div class="text-muted-foreground text-xs leading-relaxed">
+        <div class="text-xs text-muted-foreground leading-relaxed">
           <strong>Note:</strong> These are only the icons currently used in our documentation.
           <br />
           For the complete icon library, visit
-          <a href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer" class="hover:text-foreground underline transition-colors">lucide.dev/icons.</a>
+          <a href="https://lucide.dev/icons" target="_blank" rel="noopener noreferrer" class="underline hover:text-foreground transition-colors">lucide.dev/icons.</a>
         </div>
       </div>
 
-      <div class="text-muted-foreground text-sm">{{ filteredIcons().length }} of {{ totalIcons }} icons</div>
+      <div class="text-sm text-muted-foreground">{{ filteredIcons().length }} of {{ totalIcons }} icons</div>
 
-      <div class="grid max-h-[600px] grid-cols-2 gap-4 overflow-y-auto pr-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[600px] overflow-y-auto pr-4">
         @for (iconName of filteredIcons(); track iconName) {
           <button
             b3-button
             zType="outline"
             (click)="copyIconCode(iconName)"
-            class="group flex h-auto min-h-[70px] w-full flex-col items-center justify-center gap-2 px-3 py-2"
+            class="flex flex-col items-center justify-center gap-2 h-auto min-h-[70px] py-2 px-3 group w-full"
             [title]="'Click to copy: <b3-icon zType=&quot;' + iconName + '&quot; />'"
           >
-            <b3-icon [zType]="iconName" class="shrink-0 transition-transform group-hover:scale-110" />
-            <span class="group-hover:text-foreground w-full text-center text-xs leading-relaxed break-words hyphens-auto transition-colors">
+            <b3-icon [zType]="iconName" class="group-hover:scale-110 transition-transform shrink-0" />
+            <span class="text-xs text-center group-hover:text-foreground transition-colors break-words w-full leading-relaxed hyphens-auto">
               {{ iconName }}
             </span>
           </button>

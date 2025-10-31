@@ -1,20 +1,19 @@
 
 
 ```angular-ts title="calendar.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import { filter } from 'rxjs';
-
 import { ChangeDetectionStrategy, Component, computed, input, linkedSignal, model, viewChild, ViewEncapsulation } from '@angular/core';
 import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+import { filter } from 'rxjs';
+
 import { B3CalendarGridComponent } from './calendar-grid.component';
 import { B3CalendarNavigationComponent } from './calendar-navigation.component';
+import type { CalendarMode, CalendarValue } from './calendar.types';
 import { generateCalendarDays, getSelectedDatesArray, isSameDay } from './calendar.utils';
 import { calendarVariants } from './calendar.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
-import type { ClassValue } from 'clsx';
-
-import type { CalendarMode, CalendarValue } from './calendar.types';
 export type { CalendarDay, CalendarMode, CalendarValue } from './calendar.types';
 
 @Component({
@@ -401,10 +400,10 @@ export type B3CalendarDayButtonVariants = VariantProps<typeof calendarDayButtonV
 ```angular-ts title="calendar-grid.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, ElementRef, HostListener, input, output, signal, viewChild, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
 import type { CalendarDay } from './calendar.types';
 import { getDayAriaLabel, getDayId } from './calendar.utils';
 import { calendarDayButtonVariants, calendarDayVariants, calendarWeekdayVariants } from './calendar.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-calendar-grid',
@@ -671,12 +670,12 @@ export class B3CalendarGridComponent {
 ```angular-ts title="calendar-navigation.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, input, output, ViewEncapsulation } from '@angular/core';
 
+import { calendarNavVariants } from './calendar.variants';
 import { mergeClasses } from '../../shared/utils/utils';
 import { B3ButtonComponent } from '../button/button.component';
 import { B3IconComponent } from '../icon/icon.component';
 import { B3SelectItemComponent } from '../select/select-item.component';
 import { B3SelectComponent } from '../select/select.component';
-import { calendarNavVariants } from './calendar.variants';
 
 @Component({
   selector: 'b3-calendar-navigation',

@@ -1,11 +1,10 @@
 
 
 ```angular-ts title="table.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import {
   tableVariants,
   tableHeaderVariants,
@@ -16,6 +15,7 @@ import {
   tableCaptionVariants,
   type B3TableVariants,
 } from './table.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Component({
   selector: 'table[b3-table]',
@@ -230,15 +230,7 @@ import {
   B3TableCaptionComponent,
 } from './table.component';
 
-const TABLE_COMPONENTS = [
-  B3TableComponent,
-  B3TableHeaderComponent,
-  B3TableBodyComponent,
-  B3TableRowComponent,
-  B3TableHeadComponent,
-  B3TableCellComponent,
-  B3TableCaptionComponent,
-];
+const TABLE_COMPONENTS = [B3TableComponent, B3TableHeaderComponent, B3TableBodyComponent, B3TableRowComponent, B3TableHeadComponent, B3TableCellComponent, B3TableCaptionComponent];
 
 @NgModule({
   imports: [...TABLE_COMPONENTS],

@@ -3,19 +3,19 @@
 The B3UI CLI is your gateway to beautiful Angular components. With just one command, you can add professionally designed, fully accessible components to your project.
 
 ```bash tab="npm" copyButton
-npx @ngzard/ui init
+npx @ngb3/ui init
 ```
 
 ```bash tab="pnpm" copyButton
-pnpm dlx @ngzard/ui init
+pnpm dlx @ngb3/ui init
 ```
 
 ```bash tab="yarn" copyButton
-yarn @ngzard/ui init
+yarn @ngb3/ui init
 ```
 
 ```bash tab="bun" copyButton
-bunx @ngzard/ui init
+bunx @ngb3/ui init
 ```
 
 This command will guide you through an interactive setup:
@@ -36,7 +36,7 @@ This command will guide you through an interactive setup:
 B3UI has been initialized successfully!
 
 You can now add components using:
-  npx @ngzard/ui add [component]
+  npx @ngb3/ui add [component]
 ```
 
 **One-Command Setup**

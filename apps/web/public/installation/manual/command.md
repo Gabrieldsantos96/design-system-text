@@ -16,11 +16,12 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { type ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 import type { ClassValue } from 'clsx';
 
-import { commandVariants, type B3CommandVariants } from './command.variants';
-import { B3CommandOptionComponent } from './command-option.component';
 import { B3CommandInputComponent } from './command-input.component';
+import { B3CommandOptionComponent } from './command-option.component';
+import { commandVariants, type B3CommandVariants } from './command.variants';
 import { mergeClasses } from '../../shared/utils/utils';
 import type { B3Icon } from '../icon/icons';
 
@@ -345,11 +346,12 @@ export type B3CommandItemVariants = VariantProps<typeof commandItemVariants>;
 ```angular-ts title="command-divider.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { B3CommandComponent } from './command.component';
 import { commandSeparatorVariants } from './command.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
-import type { ClassValue } from 'clsx';
 @Component({
   selector: 'b3-command-divider',
   exportAs: 'zCommandDivider',
@@ -390,11 +392,11 @@ export class B3CommandDividerComponent {
 ```angular-ts title="command-empty.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { B3CommandComponent } from './command.component';
 import { commandEmptyVariants } from './command.variants';
-
-import type { ClassValue } from 'clsx';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-command-empty',
@@ -450,15 +452,16 @@ import {
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { type ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject, switchMap, timer } from 'rxjs';
-import type { ClassValue } from 'clsx';
 
-import { B3IconComponent } from '../icon/icon.component';
+import type { ClassValue } from 'clsx';
+import { Subject, switchMap, timer } from 'rxjs';
+
 import { B3CommandComponent } from './command.component';
 import { commandInputVariants } from './command.variants';
 import { mergeClasses } from '../../shared/utils/utils';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { B3IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'b3-command-input',
@@ -512,7 +515,6 @@ export class B3CommandInputComponent implements ControlValueAccessor, OnInit, On
 
   protected readonly classes = computed(() => mergeClasses(commandInputVariants({}), this.class()));
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private onChange = (_: string) => {
     // ControlValueAccessor implementation - intentionally empty
   };
@@ -582,7 +584,6 @@ export class B3CommandInputComponent implements ControlValueAccessor, OnInit, On
     this.onTouched = fn;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setDisabledState(_: boolean): void {
     // Implementation if needed for form control disabled state
   }
@@ -605,12 +606,12 @@ export class B3CommandInputComponent implements ControlValueAccessor, OnInit, On
 
 
 ```angular-ts title="command-list.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { commandListVariants } from './command.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-command-list',
@@ -637,12 +638,12 @@ export class B3CommandListComponent {
 ```angular-ts title="command-option-group.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { type AfterContentInit, ChangeDetectionStrategy, Component, computed, contentChildren, inject, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { B3CommandOptionComponent } from './command-option.component';
 import { B3CommandComponent } from './command.component';
 import { commandGroupHeadingVariants, commandGroupVariants } from './command.variants';
-
-import type { ClassValue } from 'clsx';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-command-option-group',
@@ -701,12 +702,13 @@ export class B3CommandOptionGroupComponent implements AfterContentInit {
 
 ```angular-ts title="command-option.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, input, signal, ViewEncapsulation } from '@angular/core';
+
 import type { ClassValue } from 'clsx';
 
+import { B3CommandComponent } from './command.component';
 import { commandItemVariants, commandShortcutVariants, type B3CommandItemVariants } from './command.variants';
 import { mergeClasses, transform } from '../../shared/utils/utils';
 import { B3IconComponent } from '../icon/icon.component';
-import { B3CommandComponent } from './command.component';
 import type { B3Icon } from '../icon/icons';
 
 @Component({
@@ -812,15 +814,15 @@ export class B3CommandOptionComponent {
 
 
 ```angular-ts title="command.module.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
-import { B3CommandOptionGroupComponent } from './command-option-group.component';
 import { B3CommandDividerComponent } from './command-divider.component';
-import { B3CommandOptionComponent } from './command-option.component';
-import { B3CommandInputComponent } from './command-input.component';
 import { B3CommandEmptyComponent } from './command-empty.component';
+import { B3CommandInputComponent } from './command-input.component';
 import { B3CommandListComponent } from './command-list.component';
+import { B3CommandOptionGroupComponent } from './command-option-group.component';
+import { B3CommandOptionComponent } from './command-option.component';
 import { B3CommandComponent } from './command.component';
 
 const COMMAND_COMPONENTS = [

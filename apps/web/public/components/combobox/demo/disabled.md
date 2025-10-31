@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { B3ComboboxComponent, type B3ComboboxOption } from '../combobox.component';
 
 @Component({
-  selector: 'zard-demo-combobox-disabled',
+  selector: 'b3-demo-combobox-disabled',
   standalone: true,
   imports: [B3ComboboxComponent],
   template: `

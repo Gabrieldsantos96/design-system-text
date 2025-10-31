@@ -21,7 +21,7 @@ import { ScrollSpyDirective } from '../../directives/scroll-spy.directive';
         <div class="flex flex-col gap-6">
           <h2 class="font-heading mt-12 scroll-m-28 text-2xl font-medium tracking-tight first:mt-0 lg:mt-20">Pick Your Environment</h2>
           <p class="leading-relaxed">
-            Start by selecting your environment of choice. Then, follow the instructions to install the dependencies and structure your app. zard/ui is designed to work seamlessly
+            Start by selecting your environment of choice. Then, follow the instructions to install the dependencies and structure your app. b3/ui is designed to work seamlessly
             with Angular projects.
           </p>
         </div>

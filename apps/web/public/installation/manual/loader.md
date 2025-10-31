@@ -2,10 +2,11 @@
 
 ```angular-ts title="loader.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
+
 import type { ClassValue } from 'clsx';
 
-import { mergeClasses } from '../../shared/utils/utils';
 import { loaderVariants, type B3LoaderVariants } from './loader.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-loader',

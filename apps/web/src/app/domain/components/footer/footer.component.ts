@@ -172,7 +172,7 @@ export class FooterComponent {
 
   readonly resourceLinks = signal([
     { name: 'GitHub Repository', url: 'https://github.com/zard-ui/zardui' },
-    { name: 'NPM Package', url: 'https://www.npmjs.com/package/@ngzard/ui' },
+    { name: 'NPM Package', url: 'https://www.npmjs.com/package/@ngb3/ui' },
     { name: 'Discord Community', url: 'https://discord.com/invite/yP8Uj9rAX9' },
     { name: 'WhatsApp Group', url: 'https://chat.whatsapp.com/Dctdh6Huhvm24OX6js5XKT' },
     { name: 'Follow us on X', url: 'https://x.com/zard_ui' },

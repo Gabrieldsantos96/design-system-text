@@ -8,7 +8,7 @@ import { B3SliderComponent } from '../slider.component';
   standalone: true,
   imports: [B3SliderComponent],
   template: `
-    <div class="preview flex min-h-[350px] w-full items-center justify-center p-10">
+    <div class="preview flex min-h-[350px] w-full justify-center p-10 items-center">
       <b3-slider [class]="'w-[60%]'" zStep="10" zMin="30" zMax="120" />
     </div>
   `,

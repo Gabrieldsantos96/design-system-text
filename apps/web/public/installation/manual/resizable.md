@@ -1,8 +1,7 @@
 
 
 ```angular-ts title="resizable.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
+import { isPlatformBrowser } from '@angular/common';
 import {
   type AfterContentInit,
   ChangeDetectionStrategy,
@@ -20,11 +19,12 @@ import {
   signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 
-import { mergeClasses, transform } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { B3ResizablePanelComponent } from './resizable-panel.component';
 import { resizableVariants, type B3ResizableVariants } from './resizable.variants';
+import { mergeClasses, transform } from '../../shared/utils/utils';
 
 export interface B3ResizeEvent {
   sizes: number[];
@@ -381,13 +381,13 @@ export * from './resizable.variants';
 
 
 ```angular-ts title="resizable-handle.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses, transform } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { B3ResizableComponent } from './resizable.component';
 import { resizableHandleIndicatorVariants, resizableHandleVariants } from './resizable.variants';
+import { mergeClasses, transform } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-resizable-handle, [b3-resizable-handle]',
@@ -595,12 +595,12 @@ export class B3ResizableHandleComponent {
 
 
 ```angular-ts title="resizable-panel.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses, transform } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { resizablePanelVariants } from './resizable.variants';
+import { mergeClasses, transform } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-resizable-panel',

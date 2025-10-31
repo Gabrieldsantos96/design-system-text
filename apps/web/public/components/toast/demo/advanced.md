@@ -10,7 +10,7 @@ import { B3ButtonComponent } from '../../button/button.component';
   standalone: true,
   imports: [B3ButtonComponent],
   template: `
-    <div class="flex flex-wrap gap-2">
+    <div class="flex gap-2 flex-wrap">
       <button b3-button zType="outline" (click)="showWithAction()">With Action</button>
       <button b3-button zType="outline" (click)="showCustomDuration()">Custom Duration</button>
     </div>

@@ -2,11 +2,12 @@
 
 ```angular-ts title="empty.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { ChangeDetectionStrategy, Component, computed, input, TemplateRef, ViewEncapsulation } from '@angular/core';
+
 import type { ClassValue } from 'clsx';
 
-import { B3StringTemplateOutletDirective } from '../core/directives/string-template-outlet/string-template-outlet.directive';
 import { emptyVariants, type B3EmptyVariants } from './empty.variants';
 import { mergeClasses } from '../../shared/utils/utils';
+import { B3StringTemplateOutletDirective } from '../core/directives/string-template-outlet/string-template-outlet.directive';
 
 @Component({
   selector: 'b3-empty',

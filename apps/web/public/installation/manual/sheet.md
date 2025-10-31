@@ -249,11 +249,11 @@ export type B3SheetVariants = VariantProps<typeof sheetVariants>;
 
 
 ```angular-ts title="sheet-ref.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import { filter, fromEvent, Subject, takeUntil } from 'rxjs';
-
 import type { OverlayRef } from '@angular/cdk/overlay';
 import { isPlatformBrowser } from '@angular/common';
 import { EventEmitter, Inject, PLATFORM_ID } from '@angular/core';
+
+import { filter, fromEvent, Subject, takeUntil } from 'rxjs';
 
 import type { B3SheetComponent, B3SheetOptions } from './sheet.component';
 
@@ -357,9 +357,9 @@ import { PortalModule } from '@angular/cdk/portal';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { B3ButtonComponent } from '../button/button.component';
 import { B3SheetComponent } from './sheet.component';
 import { B3SheetService } from './sheet.service';
+import { B3ButtonComponent } from '../button/button.component';
 
 const components = [CommonModule, B3ButtonComponent, B3SheetComponent, OverlayModule, PortalModule];
 
@@ -380,13 +380,13 @@ export class B3SheetModule {}
 
 
 ```angular-ts title="sheet.service.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import { inject, Injectable, InjectionToken, Injector, PLATFORM_ID, TemplateRef } from '@angular/core';
 import { type ComponentType, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { isPlatformBrowser } from '@angular/common';
+import { inject, Injectable, InjectionToken, Injector, PLATFORM_ID, TemplateRef } from '@angular/core';
 
-import { B3SheetComponent, B3SheetOptions } from './sheet.component';
 import { B3SheetRef } from './sheet-ref';
+import { B3SheetComponent, B3SheetOptions } from './sheet.component';
 
 type ContentType<T> = ComponentType<T> | TemplateRef<T> | string;
 export const Z_MODAL_DATA = new InjectionToken<any>('Z_MODAL_DATA');

@@ -16,21 +16,22 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { type ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+
 import type { ClassValue } from 'clsx';
 
-import { B3CommandOptionGroupComponent } from '../command/command-option-group.component';
-import { B3PopoverComponent, B3PopoverDirective } from '../popover/popover.component';
-import { B3CommandComponent, type B3CommandOption } from '../command/command.component';
-import { B3CommandOptionComponent } from '../command/command-option.component';
-import { B3CommandInputComponent } from '../command/command-input.component';
-import { B3CommandEmptyComponent } from '../command/command-empty.component';
-import { B3CommandListComponent } from '../command/command-list.component';
 import { comboboxVariants, type B3ComboboxVariants } from './combobox.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 import { B3ButtonComponent } from '../button/button.component';
+import { B3CommandEmptyComponent } from '../command/command-empty.component';
+import { B3CommandInputComponent } from '../command/command-input.component';
+import { B3CommandListComponent } from '../command/command-list.component';
+import { B3CommandOptionGroupComponent } from '../command/command-option-group.component';
+import { B3CommandOptionComponent } from '../command/command-option.component';
+import { B3CommandComponent, type B3CommandOption } from '../command/command.component';
 import { B3EmptyComponent } from '../empty/empty.component';
 import { B3IconComponent } from '../icon/icon.component';
-import { mergeClasses } from '../../shared/utils/utils';
 import type { B3Icon } from '../icon/icons';
+import { B3PopoverComponent, B3PopoverDirective } from '../popover/popover.component';
 
 export interface B3ComboboxOption {
   value: string;

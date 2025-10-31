@@ -12,7 +12,7 @@ import { B3TabComponent, B3TabGroupComponent, type zPosition } from '../tabs.com
   imports: [B3TabComponent, B3TabGroupComponent, B3RadioComponent, FormsModule, B3DividerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="flex h-[300px] w-full flex-col justify-between">
+    <div class="w-full h-[300px] flex flex-col justify-between">
       <b3-tab-group [zTabsPosition]="zTabsPosition" [zActivePosition]="zActivePosition" class="h-[180px]">
         <b3-tab label="First">
           <p>Is the default tab component</p>
@@ -27,7 +27,7 @@ import { B3TabComponent, B3TabGroupComponent, type zPosition } from '../tabs.com
       <div>
         <b3-divider class="my-0" />
         <div class="flex flex-col gap-3 px-4 py-2 text-sm">
-          <div class="flex items-center justify-between">
+          <div class="flex justify-between items-center">
             <span>Tabs Position:</span>
             <div class="flex gap-2">
               <span b3-radio name="tab" [(ngModel)]="zTabsPosition" value="top" zSize="sm">Top</span>
@@ -36,7 +36,7 @@ import { B3TabComponent, B3TabGroupComponent, type zPosition } from '../tabs.com
               <span b3-radio name="tab" [(ngModel)]="zTabsPosition" value="right" zSize="sm">Right</span>
             </div>
           </div>
-          <div class="flex items-center justify-center gap-2">
+          <div class="flex justify-center items-center gap-2">
             <span>Active Tab Indicator Position:</span>
             <span b3-radio name="active" [(ngModel)]="zActivePosition" value="top" zSize="sm">Top</span>
             <span b3-radio name="active" [(ngModel)]="zActivePosition" value="bottom" zSize="sm">Bottom</span>

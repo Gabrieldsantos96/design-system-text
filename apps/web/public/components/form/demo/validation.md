@@ -7,7 +7,7 @@ import { B3InputDirective } from '../../input/input.directive';
 import { B3FormModule } from '../form.module';
 
 @Component({
-  selector: 'zard-demo-form-validation',
+  selector: 'b3-demo-form-validation',
   standalone: true,
   imports: [ReactiveFormsModule, B3ButtonComponent, B3InputDirective, B3FormModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,7 +31,13 @@ import { B3FormModule } from '../form.module';
       <b3-form-field>
         <label b3-form-label zRequired>Email</label>
         <b3-form-control>
-          <input b3-input type="email" placeholder="your.email@example.com" formControlName="email" [zStatus]="emailControl.invalid && emailControl.touched ? 'error' : undefined" />
+          <input
+            b3-input
+            type="email"
+            placeholder="your.email@example.com"
+            formControlName="email"
+            [zStatus]="emailControl.invalid && emailControl.touched ? 'error' : undefined"
+          />
         </b3-form-control>
         @if (emailControl.hasError('required') && emailControl.touched) {
           <b3-form-message zType="error">Email is required.</b3-form-message>

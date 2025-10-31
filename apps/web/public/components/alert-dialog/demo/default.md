@@ -1,11 +1,11 @@
 ```angular-ts showLineNumbers copyButton
-import { B3ButtonComponent } from '../../button/button.component';
 import { Component, inject } from '@angular/core';
 
+import { B3ButtonComponent } from '../../button/button.component';
 import { B3AlertDialogService } from '../alert-dialog.service';
 
 @Component({
-  selector: 'zard-demo-alert-dialog-default',
+  selector: 'b3-demo-alert-dialog-default',
   standalone: true,
   imports: [B3ButtonComponent],
   template: ` <button b3-button zType="outline" (click)="showDialog()">Show Dialog</button> `,

@@ -1,8 +1,6 @@
 
 
 ```angular-ts title="popover.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import { merge, Subject, takeUntil } from 'rxjs';
-
 import { type ConnectedPosition, Overlay, OverlayPositionBuilder, type OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { isPlatformBrowser } from '@angular/common';
@@ -25,8 +23,10 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import { merge, Subject, takeUntil } from 'rxjs';
+
 import { popoverVariants } from './popover.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 export type B3PopoverTrigger = 'click' | 'hover' | null;
 export type B3PopoverPlacement = 'top' | 'bottom' | 'left' | 'right';

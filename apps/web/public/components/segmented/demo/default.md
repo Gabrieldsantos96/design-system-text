@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { B3SegmentedComponent } from '../segmented.component';
 
 @Component({
-  selector: 'zard-demo-segmented-default',
+  selector: 'b3-demo-segmented-default',
   standalone: true,
   imports: [B3SegmentedComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,

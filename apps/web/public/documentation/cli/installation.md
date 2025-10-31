@@ -7,19 +7,19 @@ Get B3UI up and running in your Angular project with these simple steps.
 Run the init command to set up B3UI in your Angular project. This will configure Tailwind CSS, install dependencies, and create necessary utility files.
 
 ```bash tab="npm" copyButton
-npx @ngzard/ui init
+npx @ngb3/ui init
 ```
 
 ```bash tab="pnpm" copyButton
-pnpm dlx @ngzard/ui init
+pnpm dlx @ngb3/ui init
 ```
 
 ```bash tab="yarn" copyButton
-yarn @ngzard/ui init
+yarn @ngb3/ui init
 ```
 
 ```bash tab="bun" copyButton
-bunx @ngzard/ui init
+bunx @ngb3/ui init
 ```
 
 The init command will guide you through an interactive setup:
@@ -39,7 +39,7 @@ The init command will guide you through an interactive setup:
 B3UI has been initialized successfully!
 
 You can now add components using:
-  npx @ngzard/ui add [component]
+  npx @ngb3/ui add [component]
 ```
 
 ### Step 2: Add components
@@ -47,19 +47,19 @@ You can now add components using:
 Start adding components to your project. You can add individual components, multiple components at once, or all available components.
 
 ```bash tab="npm" copyButton
-npx @ngzard/ui add button card dialog
+npx @ngb3/ui add button card dialog
 ```
 
 ```bash tab="pnpm" copyButton
-pnpm dlx @ngzard/ui add button card dialog
+pnpm dlx @ngb3/ui add button card dialog
 ```
 
 ```bash tab="yarn" copyButton
-yarn @ngzard/ui add button card dialog
+yarn @ngb3/ui add button card dialog
 ```
 
 ```bash tab="bun" copyButton
-bunx @ngzard/ui add button card dialog
+bunx @ngb3/ui add button card dialog
 ```
 
 Expected output:

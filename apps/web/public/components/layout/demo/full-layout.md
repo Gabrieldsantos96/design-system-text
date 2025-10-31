@@ -1,14 +1,14 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from '@angular/core';
 
-import { SidebarComponent, SidebarGroupComponent, SidebarGroupLabelComponent } from '../sidebar.component';
-import { B3SkeletonComponent } from '../../skeleton/skeleton.component';
 import { B3ButtonComponent } from '../../button/button.component';
 import { B3IconComponent } from '../../icon/icon.component';
+import { B3SkeletonComponent } from '../../skeleton/skeleton.component';
 import { ContentComponent } from '../content.component';
-import { LayoutComponent } from '../layout.component';
-import { HeaderComponent } from '../header.component';
 import { FooterComponent } from '../footer.component';
+import { HeaderComponent } from '../header.component';
+import { LayoutComponent } from '../layout.component';
+import { SidebarComponent, SidebarGroupComponent, SidebarGroupLabelComponent } from '../sidebar.component';
 
 @Component({
   selector: 'b3-demo-layout-full',
@@ -31,7 +31,7 @@ import { FooterComponent } from '../footer.component';
         <div class="flex items-center justify-between w-full">
           <div class="font-semibold text-lg flex items-center">
             <img src="images/zard.svg" alt="Logo" width="24" height="24" />
-            <span class="ml-2">B3UI</span>
+            <span class="ml-2">b3-design-system</span>
           </div>
           <div class="flex items-center gap-2">
             <button b3-button zType="ghost" zSize="sm">
@@ -75,7 +75,7 @@ import { FooterComponent } from '../footer.component';
           </b3-content>
 
           <b3-footer>
-            <div class="flex items-center justify-center w-full text-sm text-muted-foreground">© {{ year }} B3UI</div>
+            <div class="flex items-center justify-center w-full text-sm text-muted-foreground">© {{ year }} b3-design-system</div>
           </b3-footer>
         </b3-layout>
       </b3-layout>

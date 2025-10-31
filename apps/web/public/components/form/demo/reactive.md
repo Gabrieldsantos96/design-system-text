@@ -7,7 +7,7 @@ import { B3InputDirective } from '../../input/input.directive';
 import { B3FormModule } from '../form.module';
 
 @Component({
-  selector: 'zard-demo-form-reactive',
+  selector: 'b3-demo-form-reactive',
   standalone: true,
   imports: [ReactiveFormsModule, B3ButtonComponent, B3InputDirective, B3FormModule],
   changeDetection: ChangeDetectionStrategy.OnPush,

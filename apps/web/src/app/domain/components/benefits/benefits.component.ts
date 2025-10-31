@@ -18,55 +18,44 @@ export interface BenefitFeature {
   imports: [B3BadgeComponent, B3IconComponent],
   template: `
     <section class="relative py-24 overflow-hidden">
-      <!-- Background with gradient -->
-      <div class="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background"></div>
 
-      <!-- Animated background pattern -->
-      <div class="absolute inset-0 opacity-30">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.1),transparent_50%)]"></div>
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,oklch(30%_0.18_260/0.1),transparent_50%)]"></div>
         <div
-          class="absolute inset-0 bg-[linear-gradient(45deg,transparent_48%,rgba(120,119,198,0.1)_49%,rgba(120,119,198,0.1)_51%,transparent_52%)] bg-[length:20px_20px] animate-[slide_20s_linear_infinite]"
+          class="absolute inset-0 bg-[linear-gradient(45deg,transparent_48%,oklch(30%_0.18_260/0.05)_49%,oklch(30%_0.18_260/0.05)_51%,transparent_52%)] bg-[length:30px_30px] animate-[slide_30s_linear_infinite]"
         ></div>
       </div>
 
-      <div class="relative b3-10 container mx-auto px-4">
+      <div class="relative container mx-auto px-4">
         <div class="max-w-6xl mx-auto">
-          <!-- Header -->
           <div class="text-center mb-16">
-            <b3-badge zType="secondary" class="mb-4"> Why Choose B3UI? </b3-badge>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Built for
-              <span class="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"> Modern Angular </span>
-              Development
-            </h2>
-            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">Experience the perfect blend of beautiful design, developer experience, and performance optimization.</p>
+            <b3-badge zType="secondary" class="mb-4"> Filosofia B3/UI </b3-badge>
+            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Sem <code class="text-primary font-mono">npm install</code>. Instale via CLI, copie o código-fonte e faça do seu jeito — como a B3 faz.
+            </p>
           </div>
 
-          <!-- Features Grid -->
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             @for (feature of features(); track feature.title) {
               <div class="group relative">
-                <!-- Card with hover effects -->
                 <div
-                  class="relative p-6 rounded-2xl border bg-card/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1"
+                  class="relative p-6 rounded-2xl border bg-card/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:-translate-y-2"
                 >
-                  <!-- Icon container -->
-                  <div class="flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <b3-icon [zType]="feature.icon" class="text-xl" />
+                  <div class="flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 text-primary mb-5 group-hover:scale-110 transition-transform duration-300">
+                    <b3-icon [zType]="feature.icon" class="text-2xl" />
                   </div>
 
-                  <!-- Content -->
-                  <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
+                  <h3 class="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
                     {{ feature.title }}
                   </h3>
                   <p class="text-muted-foreground leading-relaxed">
                     {{ feature.description }}
                   </p>
 
-                  <!-- Highlight badge for premium features -->
                   @if (feature.highlight) {
-                    <div class="absolute -top-2 -right-2">
-                      <b3-badge [class]="'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs px-2 py-1'">
+                    <div class="absolute -top-3 -right-3">
+                      <b3-badge class="bg-primary text-primary-foreground text-xs font-medium px-3 py-1">
                         {{ feature.highlight }}
                       </b3-badge>
                     </div>
@@ -76,15 +65,14 @@ export interface BenefitFeature {
             }
           </div>
 
-          <!-- Stats section -->
           <div class="mt-20 pt-16 border-t border-border/50">
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
               @for (stat of stats(); track stat.label) {
                 <div class="text-center group">
-                  <div class="text-3xl lg:text-4xl font-bold text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
+                  <div class="text-4xl lg:text-5xl font-bold text-primary mb-3 group-hover:scale-110 transition-transform duration-300">
                     {{ stat.value }}
                   </div>
-                  <div class="text-sm text-muted-foreground font-medium">
+                  <div class="text-sm text-muted-foreground font-medium uppercase tracking-wider">
                     {{ stat.label }}
                   </div>
                 </div>
@@ -97,12 +85,8 @@ export interface BenefitFeature {
 
     <style>
       @keyframes slide {
-        0% {
-          transform: translateX(-100px);
-        }
-        100% {
-          transform: translateX(100px);
-        }
+        0% { transform: translateX(-120px) translateY(-120px); }
+        100% { transform: translateX(120px) translateY(120px); }
       }
     </style>
   `,
@@ -110,43 +94,44 @@ export interface BenefitFeature {
 export class BenefitsComponent {
   readonly features = signal<BenefitFeature[]>([
     {
-      icon: 'zap',
-      title: 'Lightning Fast',
-      description: 'Built with performance in mind. Optimized bundle size and runtime performance for production apps.',
-      highlight: 'Fast',
+      icon: 'copy',
+      title: 'Copiar e Colar',
+      description: 'Nenhum pacote. Copie o componente diretamente do site e cole no seu projeto. Código 100% seu.',
+      highlight: 'Sem dependência',
     },
     {
-      icon: 'palette',
-      title: 'Beautiful Design',
-      description: 'Carefully crafted components that follow modern design principles and accessibility standards.',
+      icon: 'terminal',
+      title: 'Instalação via CLI',
+      description: 'Use <code class="font-mono text-primary">npx b3-ui add button</code> — o código é gerado no seu projeto automaticamente.',
+      highlight: 'Zero lock-in',
+    },
+    {
+      icon: 'terminal',
+      title: 'Personalização Total',
+      description: 'O código é seu. Modifique estilos, comportamento e estrutura conforme as regras da B3 ou do seu time.',
     },
     {
       icon: 'code',
-      title: 'Developer Experience',
-      description: 'TypeScript-first, excellent IDE support, and comprehensive documentation for smooth development.',
-      highlight: 'DX',
+      title: 'TypeScript Nativo',
+      description: 'Componentes em TS puro, com tipagem estrita e integração com Angular Signals. Sem camadas de abstração.',
     },
     {
       icon: 'layers',
-      title: 'Modular Architecture',
-      description: 'Import only what you need. Tree-shakable components that keep your bundle size minimal.',
+      title: 'Tree-Shakable por Padrão',
+      description: 'Como o código é seu, o bundler elimina automaticamente o que não é usado. Bundle mínimo garantido.',
     },
     {
       icon: 'shield',
-      title: 'Type Safe',
-      description: 'Full TypeScript support with strict typing, ensuring reliability and better code completion.',
-    },
-    {
-      icon: 'heart',
-      title: 'Community Driven',
-      description: 'Open source with active community contributions, regular updates and responsive support.',
+      title: 'Conformidade B3',
+      description: 'Design, acessibilidade e padrões de segurança alinhados com as diretrizes oficiais da B3.',
+      highlight: 'Oficial',
     },
   ]);
 
   readonly stats = signal([
-    { value: '30+', label: 'Components' },
-    { value: '99%', label: 'TypeScript' },
-    { value: '100%', label: 'Tree Shakable' },
-    { value: '24/7', label: 'Community Support' },
+    { value: '0', label: 'Dependências externas' },
+    { value: '100%', label: 'Código seu' },
+    { value: 'CLI', label: 'Instalação instantânea' },
+    { value: 'B3', label: 'Design oficial' },
   ]);
 }

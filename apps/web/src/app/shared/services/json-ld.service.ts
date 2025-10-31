@@ -134,7 +134,7 @@ export class JsonLdService {
     const article: JsonLdArticle = {
       '@context': 'https://schema.org',
       '@type': 'Article',
-      headline: `${displayName} - zard/ui`,
+      headline: `${displayName} - b3/ui`,
       description: description,
       image: `${this.baseUrl}/og/og-${componentName}.jpg`,
       author: {

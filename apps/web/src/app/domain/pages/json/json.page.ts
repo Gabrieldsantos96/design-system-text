@@ -44,7 +44,7 @@ import { ScrollSpyDirective } from '../../directives/scroll-spy.directive';
 })
 export class JsonPage implements OnInit {
   private readonly seoService = inject(SeoService);
-  readonly title = 'components.json - zard/ui';
+  readonly title = 'components.json - b3/ui';
   activeAnchor?: string;
 
   readonly navigationConfig: NavigationConfig = {

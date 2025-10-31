@@ -1,11 +1,11 @@
 ```angular-ts showLineNumbers copyButton
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { B3ButtonComponent } from '../../button/button.component';
-import { Z_MODAL_DATA, B3SheetService } from '../sheet.service';
 import { B3InputDirective } from '../../input/input.directive';
 import { B3SheetModule } from '../sheet.module';
+import { Z_MODAL_DATA, B3SheetService } from '../sheet.service';
 
 interface iSheetData {
   name: string;
@@ -13,7 +13,7 @@ interface iSheetData {
 }
 
 @Component({
-  selector: 'zard-demo-sheet-basic',
+  selector: 'b3-demo-sheet-basic',
   exportAs: 'zardDemoSheetBasic',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, B3InputDirective],

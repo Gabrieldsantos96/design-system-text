@@ -6,7 +6,7 @@ import { B3ButtonComponent } from '../../button/button.component';
 import { B3ComboboxComponent, type B3ComboboxOption } from '../combobox.component';
 
 @Component({
-  selector: 'zard-demo-combobox-form',
+  selector: 'b3-demo-combobox-form',
   standalone: true,
   imports: [ReactiveFormsModule, B3ComboboxComponent, B3ButtonComponent],
   template: `

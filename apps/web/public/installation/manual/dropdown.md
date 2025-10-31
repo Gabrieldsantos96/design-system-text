@@ -3,6 +3,7 @@
 ```angular-ts title="dropdown.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { Overlay, OverlayModule, OverlayPositionBuilder, type OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,11 +22,12 @@ import {
   ViewContainerRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { mergeClasses, transform } from '../../shared/utils/utils';
-import { dropdownContentVariants } from './dropdown.variants';
 
 import type { ClassValue } from 'clsx';
-import { isPlatformBrowser } from '@angular/common';
+
+import { dropdownContentVariants } from './dropdown.variants';
+import { mergeClasses, transform } from '../../shared/utils/utils';
+
 @Component({
   selector: 'b3-dropdown-menu',
   exportAs: 'zDropdownMenu',
@@ -330,13 +332,13 @@ export type B3DropdownLabelVariants = VariantProps<typeof dropdownLabelVariants>
 
 
 ```angular-ts title="dropdown-item.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { Component, computed, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses, transform } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { B3DropdownService } from './dropdown.service';
 import { dropdownItemVariants, type B3DropdownItemVariants } from './dropdown.variants';
+import { mergeClasses, transform } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-dropdown-menu-item, [b3-dropdown-menu-item]',
@@ -392,12 +394,12 @@ export class B3DropdownMenuItemComponent {
 
 
 ```angular-ts title="dropdown-label.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses, transform } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { dropdownLabelVariants } from './dropdown.variants';
+import { mergeClasses, transform } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-dropdown-menu-label, [b3-dropdown-menu-label]',
@@ -465,12 +467,12 @@ export class B3DropdownMenuContentComponent {
 
 
 ```angular-ts title="dropdown-shortcut.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
-import type { ClassValue } from 'clsx';
-
 import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 
-import { mergeClasses } from '../../shared/utils/utils';
+import type { ClassValue } from 'clsx';
+
 import { dropdownShortcutVariants } from './dropdown.variants';
+import { mergeClasses } from '../../shared/utils/utils';
 
 @Component({
   selector: 'b3-dropdown-menu-shortcut, [b3-dropdown-menu-shortcut]',
@@ -604,10 +606,10 @@ export class B3DropdownDirective implements OnInit {
 import { OverlayModule } from '@angular/cdk/overlay';
 import { NgModule } from '@angular/core';
 
+import { B3DropdownMenuItemComponent } from './dropdown-item.component';
+import { B3DropdownMenuLabelComponent } from './dropdown-label.component';
 import { B3DropdownMenuContentComponent } from './dropdown-menu-content.component';
 import { B3DropdownMenuShortcutComponent } from './dropdown-shortcut.component';
-import { B3DropdownMenuLabelComponent } from './dropdown-label.component';
-import { B3DropdownMenuItemComponent } from './dropdown-item.component';
 import { B3DropdownDirective } from './dropdown-trigger.directive';
 import { B3DropdownMenuComponent } from './dropdown.component';
 
@@ -633,8 +635,9 @@ export class B3DropdownModule {}
 ```angular-ts title="dropdown.service.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
 import { Overlay, OverlayPositionBuilder, type OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { type ElementRef, inject, Injectable, PLATFORM_ID, signal, type TemplateRef, type ViewContainerRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { type ElementRef, inject, Injectable, PLATFORM_ID, signal, type TemplateRef, type ViewContainerRef } from '@angular/core';
+
 import type { Subscription } from 'rxjs';
 
 @Injectable({

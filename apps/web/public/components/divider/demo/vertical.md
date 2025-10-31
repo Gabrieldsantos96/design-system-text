@@ -8,7 +8,7 @@ import { B3DividerComponent } from '../divider.component';
   standalone: true,
   imports: [B3DividerComponent],
   template: `
-    <div class="flex h-20">
+    <div class="h-20 flex">
       <p>Left</p>
       <b3-divider zOrientation="vertical"></b3-divider>
       <p>Right</p>

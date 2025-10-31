@@ -26,7 +26,7 @@ export const installations: Installation[] = [
   {
     environment: 'angular',
     title: 'Angular',
-    description: 'Install and configure zard/ui for Angular.',
+    description: 'Install and configure b3/ui for Angular.',
     manual: [
       {
         title: 'Create project',
@@ -117,7 +117,7 @@ export const installations: Installation[] = [
       },
       {
         title: 'Add B3/ui',
-        subtitle: 'prepare your entire project using the zard/ui cli:',
+        subtitle: 'prepare your entire project using the b3/ui cli:',
         file: {
           path: '/documentation/setup/angular/cli/add-zard-ui.md',
           lineNumber: false,

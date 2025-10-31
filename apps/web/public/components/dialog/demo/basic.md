@@ -13,7 +13,7 @@ interface iDialogData {
 }
 
 @Component({
-  selector: 'zard-demo-dialog-basic',
+  selector: 'b3-demo-dialog-basic',
   exportAs: 'zardDemoDialogBasic',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, B3InputDirective],
