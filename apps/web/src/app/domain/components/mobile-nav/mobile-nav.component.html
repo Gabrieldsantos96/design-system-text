@@ -1,0 +1,90 @@
+<button b3-button zType="ghost" (click)="toggleMenu()" aria-label="Toggle Menu" class="!p-0 !h-auto !bg-transparent">
+  <a class="flex xl:hidden justify-center items-center gap-2.5">
+    <div class="relative flex h-8 w-4 items-center justify-center">
+      <div class="relative size-4">
+        <span
+          [class]="
+            sidebarState()
+              ? 'bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100 top-[0.4rem] rotate-45'
+              : 'bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100 top-1'
+          "
+        ></span>
+        <span
+          [class]="
+            sidebarState()
+              ? 'bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100 top-[0.4rem] -rotate-45'
+              : 'bg-foreground absolute left-0 block h-0.5 w-4 transition-all duration-100 top-2.5'
+          "
+        ></span>
+      </div>
+      <span class="sr-only">Toggle Menu</span>
+    </div>
+    <span class="flex h-8 items-center text-lg leading-none font-medium">Menu</span>
+  </a>
+</button>
+
+@if (sidebarState()) {
+  <div
+    [attr.data-state]="sidebarState() ? 'open' : 'closed'"
+    (click)="closeMenu()"
+    class="fixed inset-0 b3-40 bg-black/50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 duration-200"
+    style="top: var(--header-height)"
+  ></div>
+
+  <div class="fixed left-0 b3-50" style="top: var(--header-height); min-width: max-content; will-change: transform">
+    <div
+      [attr.data-side]="'bottom'"
+      [attr.data-align]="'start'"
+      [attr.data-state]="sidebarState() ? 'open' : 'closed'"
+      (click)="$event.stopPropagation()"
+      role="dialog"
+      class="text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 b3-50 border outline-hidden bg-background/90 no-scrollbar overflow-y-auto rounded-none border-none p-0 shadow-none backdrop-blur duration-100"
+      style="width: 100vw; height: calc(100vh - var(--header-height))"
+      tabindex="-1"
+    >
+      <nav class="flex flex-col gap-12 overflow-auto px-6 py-6">
+        <div class="flex flex-col gap-4">
+          <div class="text-muted-foreground text-sm font-medium">Menu</div>
+          <div class="flex flex-col gap-3">
+            @for (item of mainMenu; track $index) {
+              <a
+                [routerLink]="item.path"
+                routerLinkActive="font-semibold"
+                [routerLinkActiveOptions]="{ exact: true }"
+                (click)="isAvailable(item.available)"
+                class="text-2xl font-medium flex items-center gap-2 capitalize hover:text-foreground transition-colors"
+              >
+                {{ item.name }}
+                @if (!item.available) {
+                  <b3-badge zType="secondary" class="px-1.5 py-0.5 text-xs">soon</b3-badge>
+                }
+              </a>
+            }
+          </div>
+        </div>
+
+        @for (doc of sidebarPaths; track $index) {
+          <div class="flex flex-col gap-4">
+            <div class="text-muted-foreground text-sm font-medium">{{ doc.title }}</div>
+            <div class="flex flex-col gap-3">
+              @for (path of doc.data; track $index) {
+                <a
+                  [routerLink]="path.path"
+                  routerLinkActive="font-semibold"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="isAvailable(path.available)"
+                  class="text-2xl font-medium flex items-center gap-2 capitalize hover:text-foreground transition-colors"
+                >
+                  {{ path.name }}
+                  @if (!path.available) {
+                    <b3-badge zType="secondary" class="px-1.5 py-0.5 text-xs">soon</b3-badge>
+                  }
+                </a>
+              }
+            </div>
+          </div>
+        }
+      </nav>
+    </div>
+  </div>
+}

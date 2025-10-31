@@ -1,0 +1,220 @@
+```angular-ts showLineNumbers copyButton
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+
+import { B3SelectItemComponent } from '../../select/select-item.component';
+import { B3CheckboxComponent } from '../../checkbox/checkbox.component';
+import { B3SelectComponent } from '../../select/select.component';
+import { B3ButtonComponent } from '../../button/button.component';
+import { B3InputDirective } from '../../input/input.directive';
+import { B3FormModule } from '../form.module';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  country: string;
+  company: string;
+  message: string;
+  newsletter: boolean;
+  terms: boolean;
+}
+
+@Component({
+  selector: 'zard-demo-form-complex',
+  standalone: true,
+  imports: [ReactiveFormsModule, B3ButtonComponent, B3InputDirective, B3CheckboxComponent, B3SelectComponent, B3SelectItemComponent, B3FormModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  template: `
+    <form [formGroup]="form" (ngSubmit)="handleSubmit()" class="space-y-6 max-w-lg">
+      <!-- Name Fields Row -->
+      <div class="flex gap-4 items-start">
+        <b3-form-field>
+          <label b3-form-label zRequired for="firstName">First Name</label>
+          <b3-form-control [errorMessage]="isFieldInvalid('firstName') ? 'First name is required' : ''">
+            <input b3-input id="firstName" type="text" placeholder="John" formControlName="firstName" />
+          </b3-form-control>
+        </b3-form-field>
+
+        <b3-form-field>
+          <label b3-form-label zRequired for="lastName">Last Name</label>
+          <b3-form-control [errorMessage]="isFieldInvalid('lastName') ? 'Last name is required' : ''">
+            <input b3-input id="lastName" type="text" placeholder="Doe" formControlName="lastName" />
+          </b3-form-control>
+        </b3-form-field>
+      </div>
+
+      <!-- Email Field -->
+      <b3-form-field>
+        <label b3-form-label zRequired for="email">Email</label>
+        <b3-form-control [errorMessage]="isFieldInvalid('email') ? getEmailError() : ''">
+          <input b3-input id="email" type="email" placeholder="john.doe@example.com" formControlName="email" />
+        </b3-form-control>
+      </b3-form-field>
+
+      <!-- Phone Field -->
+      <b3-form-field>
+        <label b3-form-label for="phone">Phone Number</label>
+        <b3-form-control helpText="Include country code if outside US">
+          <input b3-input id="phone" type="tel" placeholder="+1 (555) 123-4567" formControlName="phone" />
+        </b3-form-control>
+      </b3-form-field>
+
+      <!-- Country Selector -->
+      <b3-form-field>
+        <label b3-form-label zRequired for="country">Country</label>
+        <b3-form-control [errorMessage]="isFieldInvalid('country') ? 'Please select a country' : ''">
+          <b3-select id="country" formControlName="country" placeholder="Select your country">
+            @for (country of countries; track country.value) {
+              <b3-select-item [zValue]="country.value">{{ country.label }}</b3-select-item>
+            }
+          </b3-select>
+        </b3-form-control>
+      </b3-form-field>
+
+      <!-- Company Field -->
+      <b3-form-field>
+        <label b3-form-label for="company">Company</label>
+        <b3-form-control helpText="Optional: Where do you work?">
+          <input b3-input id="company" type="text" placeholder="Your company name" formControlName="company" />
+        </b3-form-control>
+      </b3-form-field>
+
+      <!-- Message Field -->
+      <b3-form-field>
+        <label b3-form-label for="message">Message</label>
+        <b3-form-control
+          [errorMessage]="isFieldInvalid('message') ? 'Message is too long (max 500 characters)' : ''"
+          [helpText]="!isFieldInvalid('message') ? messageLength() + '/500 characters' : ''"
+        >
+          <textarea b3-input id="message" rows="4" placeholder="Tell us about your project or inquiry..." formControlName="message"></textarea>
+        </b3-form-control>
+      </b3-form-field>
+
+      <!-- Newsletter Checkbox -->
+      <b3-form-field>
+        <b3-form-control helpText="Get updates about new features and releases" class="flex flex-col">
+          <div class="flex items-center space-x-2">
+            <b3-checkbox id="newsletter" formControlName="newsletter" />
+            <label b3-form-label class="!mb-0" for="newsletter">Subscribe to newsletter</label>
+          </div>
+        </b3-form-control>
+      </b3-form-field>
+
+      <!-- Terms Checkbox -->
+      <b3-form-field>
+        <b3-form-control [errorMessage]="isFieldInvalid('terms') ? 'You must accept the terms and conditions' : ''" class="flex flex-col">
+          <div class="flex items-center space-x-2">
+            <b3-checkbox id="terms" formControlName="terms" />
+            <label b3-form-label class="!mb-0" zRequired for="terms">I agree to the terms and conditions</label>
+          </div>
+        </b3-form-control>
+      </b3-form-field>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-2 pt-4">
+        <button b3-button zType="default" type="submit" [disabled]="isSubmitting()">
+          {{ isSubmitting() ? 'Submitting...' : 'Submit Form' }}
+        </button>
+        <button b3-button zType="outline" type="button" (click)="resetForm()">Reset</button>
+      </div>
+
+      <!-- Success Message -->
+      @if (showSuccess()) {
+        <div class="p-4 bg-green-50 border border-green-200 rounded-md">
+          <b3-form-message zType="success">✓ Form submitted successfully! We'll get back to you soon.</b3-form-message>
+        </div>
+      }
+    </form>
+  `,
+})
+export class B3DemoFormComplexComponent {
+  private readonly fb = inject(FormBuilder);
+  private readonly destroyRef = inject(DestroyRef);
+
+  readonly showSuccess = signal(false);
+  readonly isSubmitting = signal(false);
+
+  readonly countries = [
+    { value: 'us', label: 'United States' },
+    { value: 'ca', label: 'Canada' },
+    { value: 'uk', label: 'United Kingdom' },
+    { value: 'au', label: 'Australia' },
+    { value: 'de', label: 'Germany' },
+    { value: 'fr', label: 'France' },
+    { value: 'jp', label: 'Japan' },
+    { value: 'br', label: 'Brazil' },
+  ] as const;
+
+  readonly form = this.fb.nonNullable.group({
+    firstName: ['', [Validators.required, Validators.minLength(2)]],
+    lastName: ['', [Validators.required, Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.email]],
+    phone: [''],
+    country: ['', Validators.required],
+    company: [''],
+    message: ['', Validators.maxLength(500)],
+    newsletter: [false],
+    terms: [false, Validators.requiredTrue],
+  });
+
+  readonly messageLength = signal(0);
+
+  constructor() {
+    // Track message length
+    this.form.controls.message.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(value => {
+      this.messageLength.set(value?.length ?? 0);
+    });
+  }
+
+  isFieldInvalid(fieldName: keyof FormData): boolean {
+    const field = this.form.get(fieldName);
+    return !!(field?.invalid && (field?.dirty || field?.touched));
+  }
+
+  getEmailError(): string {
+    const email = this.form.get('email');
+    if (email?.hasError('required')) {
+      return 'Email is required';
+    }
+    if (email?.hasError('email')) {
+      return 'Please enter a valid email address';
+    }
+    return '';
+  }
+
+  async handleSubmit(): Promise<void> {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.isSubmitting.set(true);
+
+    await this.simulateApiCall();
+
+    this.isSubmitting.set(false);
+    this.showSuccess.set(true);
+
+    console.log('Form submitted:', this.form.getRawValue());
+
+    setTimeout(() => {
+      this.showSuccess.set(false);
+    }, 5000);
+  }
+
+  resetForm(): void {
+    this.form.reset();
+    this.showSuccess.set(false);
+    this.messageLength.set(0);
+  }
+
+  private simulateApiCall(): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, 1000));
+  }
+}
+
+```

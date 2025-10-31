@@ -1,0 +1,29 @@
+@if(installGuide) {
+<b3-content [title]="installGuide.title" [navigationConfig]="navigationConfig" [activeAnchor]="activeAnchor">
+  <b3-doc-heading [title]="installGuide.title" [description]="installGuide.description" scrollSpyItem="overview" id="overview"> </b3-doc-heading>
+  <main class="overflow-hidden transition-all duration-200 ease-in-out">
+    <nav class="flex gap-4 mb-4">
+      @if(installGuide.cli.length > 0) {
+      <button class="text-base cursor-pointer" (click)="activeTab.set('cli')" [class.font-semibold]="activeTab() === 'cli'" [class.text-foreground]="activeTab() === 'cli'">
+        CLI
+      </button>
+      } @if(installGuide.manual.length > 0) {
+      <button
+        class="text-base cursor-pointer"
+        (click)="activeTab.set('manual')"
+        [class.font-semibold]="activeTab() === 'manual'"
+        [class.text-foreground]="activeTab() === 'manual'"
+      >
+        Manual
+      </button>
+      }
+    </nav>
+    <section class="transition-all" [class]="activeTab() === 'manual' ? 'translate-x-0' : ['-translate-x-full', 'sr-only']">
+      <b3-steps [steps]="installGuide.manual"></b3-steps>
+    </section>
+    <section class="transition-all" [class]="activeTab() === 'cli' ? 'translate-x-0' : ['translate-x-full', 'sr-only']">
+      <b3-steps [steps]="installGuide.cli"></b3-steps>
+    </section>
+  </main>
+</b3-content>
+}

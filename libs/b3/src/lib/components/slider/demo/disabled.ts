@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+
+import { B3SliderComponent } from '../slider.component';
+
+@Component({
+  selector: 'b3-demo-slider-disabled',
+  standalone: true,
+  imports: [B3SliderComponent],
+  template: `
+    <div class="preview flex min-h-[350px] w-full justify-center p-10 items-center">
+      <b3-slider [class]="'w-[60%]'" zDefault="50" zDisabled="true" />
+    </div>
+  `,
+})
+export class B3DemoSliderDisabledComponent {}

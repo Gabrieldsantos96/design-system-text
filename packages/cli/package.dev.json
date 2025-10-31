@@ -1,0 +1,11 @@
+{
+  "name": "@ngb3/ui-dev",
+  "version": "0.0.0-dev",
+  "description": "Development version of @ngb3/ui CLI",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "b3dev": "./index.js"
+  },
+  "private": true
+}

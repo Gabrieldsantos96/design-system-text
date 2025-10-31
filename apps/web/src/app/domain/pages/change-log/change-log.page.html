@@ -1,0 +1,25 @@
+<b3-content
+  [title]="title"
+  [navigationConfig]="navigationConfig()"
+  [activeAnchor]="activeAnchor"
+  [onAnchorClick]="onAnchorClick.bind(this)"
+  scrollSpy
+  (scrollSpyChange)="activeAnchor = $event"
+>
+  <b3-doc-heading title="Changelog" description="Latest updates and announcements." scrollSpyItem="overview" id="overview" />
+
+  <div class="space-y-8">
+    @for (entry of entries(); track trackByEntry($index, entry)) {
+    <div [id]="entry.id" class="no-bullets" scrollSpyItem [scrollSpyItem]="entry.id">
+      <b3-markdown-renderer [markdownUrl]="'/documentation/change-log/' + entry.filename"></b3-markdown-renderer>
+    </div>
+    } @if (isLoading() && entries().length === 0) {
+    <div class="flex justify-center items-center py-8">
+      <b3-loader />
+      <span class="ml-3 text-muted-foreground">Loading changelog entries...</span>
+    </div>
+    } @if (!isLoading() && entries().length === 0) {
+    <b3-alert variant="outline" class="mt-8" zTitle="No entries found" zDescription="No changelog entries were found at this time."> </b3-alert>
+    }
+  </div>
+</b3-content>

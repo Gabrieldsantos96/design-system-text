@@ -1,0 +1,227 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "defaultBase": "master",
+  "release": {
+    "projects": ["libs/b3", "packages/cli"],
+    "projectsRelationship": "fixed",
+    "releaseTagPattern": "v{version}",
+    "git": {
+      "commit": true,
+      "commitMessage": "🔖 chore(release): publish v{version}",
+      "tag": true,
+      "tagMessage": "v{version}"
+    },
+    "changelog": {
+      "automaticFromRef": true,
+      "workspaceChangelog": {
+        "createRelease": "github",
+        "file": "CHANGELOG.md",
+        "renderOptions": {
+          "authors": true,
+          "commitReferences": true,
+          "versionTitleDate": true
+        }
+      },
+      "projectChangelogs": false
+    },
+    "version": {
+      "preVersionCommand": "npx tsx scripts/normalize-commits.cts",
+      "generatorOptions": {
+        "fallbackCurrentVersionResolver": "disk",
+        "currentVersionResolver": "git-tag",
+        "specifierSource": "conventional-commits"
+      }
+    },
+    "conventionalCommits": {
+      "types": {
+        "feat": {
+          "semverBump": "minor",
+          "changelog": {
+            "title": "✨ Features",
+            "hidden": false
+          }
+        },
+        "fix": {
+          "semverBump": "patch",
+          "changelog": {
+            "title": "🐛 Bug Fixes",
+            "hidden": false
+          }
+        },
+        "perf": {
+          "semverBump": "patch",
+          "changelog": {
+            "title": "🚀 Performance Improvements",
+            "hidden": false
+          }
+        },
+        "refactor": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "📦 Code Refactoring",
+            "hidden": false
+          }
+        },
+        "docs": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "📝 Documentation",
+            "hidden": false
+          }
+        },
+        "build": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "🏗️ Build System",
+            "hidden": false
+          }
+        },
+        "test": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "🧪 Tests",
+            "hidden": false
+          }
+        },
+        "ci": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "🔧 Continuous Integration",
+            "hidden": true
+          }
+        },
+        "chore": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "🔧 Chores",
+            "hidden": true
+          }
+        },
+        "style": {
+          "semverBump": "none",
+          "changelog": {
+            "title": "💄 Styles",
+            "hidden": true
+          }
+        },
+        "revert": {
+          "semverBump": "patch",
+          "changelog": {
+            "title": "⏪️ Reverts",
+            "hidden": false
+          }
+        }
+      }
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "production": [
+      "default",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/eslint.config.mjs",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/test-setup.[jt]s"
+    ],
+    "sharedGlobals": []
+  },
+  "targetDefaults": {
+    "@angular-devkit/build-angular:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/eslint:lint": {
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore", "{workspaceRoot}/eslint.config.mjs"]
+    },
+    "@nx/jest:jest": {
+      "cache": true,
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.cjs"],
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "@nx/angular:package": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  },
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "none",
+      "linter": "eslint",
+      "style": "css",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nx/angular:component": {
+      "style": "css",
+      "type": "component"
+    },
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@nx/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@nx/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@nx/angular:scam": {
+      "type": "component"
+    },
+    "@nx/angular:scam-directive": {
+      "type": "directive"
+    },
+    "@nx/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@nx/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@nx/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@nx/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@nx/angular:resolver": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
+    }
+  }
+}

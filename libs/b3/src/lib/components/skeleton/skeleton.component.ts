@@ -1,0 +1,22 @@
+import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
+
+import type { ClassValue } from 'clsx';
+
+import { skeletonVariants } from './skeleton.variants';
+import { mergeClasses } from '../../shared/utils/utils';
+
+@Component({
+  selector: 'b3-skeleton',
+  exportAs: 'zSkeleton',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  template: `<div data-slot="skeleton" [class]="classes()"></div>`,
+  host: {
+    class: 'block',
+  },
+})
+export class B3SkeletonComponent {
+  readonly class = input<ClassValue>('');
+
+  protected readonly classes = computed(() => mergeClasses(skeletonVariants(), this.class()));
+}

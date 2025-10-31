@@ -1,0 +1,132 @@
+
+
+```angular-ts title="progress-bar.component.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
+import type { ClassValue } from 'clsx';
+
+import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from '@angular/core';
+
+import { mergeClasses } from '../../shared/utils/utils';
+import { containerProgressBarVariants, progressBarVariants, type B3ContainerProgressBarVariants, type B3ProgressBarVariants } from './progress-bar.variants';
+
+@Component({
+  selector: 'b3-progress-bar',
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
+  styles: `
+    @keyframes indeterminate {
+      0% {
+        left: -0%;
+        width: 30%;
+      }
+      50% {
+        left: 50%;
+        width: 30%;
+      }
+      100% {
+        left: 100%;
+        width: 0;
+      }
+    }
+  `,
+  template: `
+    @if (zIndeterminate()) {
+      <div [class]="classes()">
+        <div [class]="barClasses()"></div>
+      </div>
+    } @else {
+      <div [class]="classes()">
+        <div [style.width.%]="correctedProgress()" [class]="barClasses()" id="bar"></div>
+      </div>
+    }
+  `,
+  host: {
+    class: 'w-full',
+  },
+})
+export class B3ProgressBarComponent {
+  readonly zType = input<B3ProgressBarVariants['zType']>('default');
+  readonly zSize = input<B3ContainerProgressBarVariants['zSize']>('default');
+  readonly zShape = input<B3ProgressBarVariants['zShape']>('default');
+  readonly zIndeterminate = input<B3ProgressBarVariants['zIndeterminate']>(undefined);
+  readonly class = input<ClassValue>('');
+  readonly barClass = input<ClassValue>('');
+  readonly progress = input(0);
+
+  readonly correctedProgress = computed(() => {
+    if (this.progress() > 100) return 100;
+    if (this.progress() < 0) return 0;
+    return this.progress();
+  });
+
+  protected readonly classes = computed(() =>
+    mergeClasses(containerProgressBarVariants({ zIndeterminate: this.zIndeterminate(), zType: this.zType(), zSize: this.zSize(), zShape: this.zShape() }), this.class()),
+  );
+
+  protected readonly barClasses = computed(() =>
+    mergeClasses(progressBarVariants({ zIndeterminate: this.zIndeterminate(), zType: this.zType(), zShape: this.zShape() }), this.barClass()),
+  );
+}
+
+```
+
+
+
+```angular-ts title="progress-bar.variants.ts" expandable="true" expandableTitle="Expand" copyButton showLineNumbers
+import { cva, type VariantProps } from 'class-variance-authority';
+
+export const containerProgressBarVariants = cva('w-full transition-all', {
+  variants: {
+    zType: {
+      default: 'bg-primary-foreground hover:bg-primary/10',
+      destructive: 'bg-primary-foreground dark:text-secondary-foreground hover:bg-destructive/10',
+      accent: 'bg-primary-foreground hover:bg-primary/10',
+    },
+    zSize: {
+      default: 'h-2',
+      sm: 'h-3',
+      lg: 'h-5',
+    },
+    zShape: {
+      default: 'rounded-sm',
+      circle: 'rounded-full',
+      square: 'rounded-none',
+    },
+    zIndeterminate: {
+      true: 'relative',
+    },
+  },
+
+  defaultVariants: {
+    zType: 'default',
+    zSize: 'default',
+    zShape: 'default',
+  },
+});
+export type B3ContainerProgressBarVariants = VariantProps<typeof containerProgressBarVariants>;
+
+export const progressBarVariants = cva('h-full transition-all', {
+  variants: {
+    zType: {
+      default: 'bg-primary',
+      destructive: 'bg-destructive',
+      accent: 'bg-chart-1',
+    },
+    zShape: {
+      default: 'rounded-sm',
+      circle: 'rounded-full ',
+      square: 'rounded-none',
+    },
+    zIndeterminate: {
+      true: 'absolute animate-[indeterminate_1.5s_infinite_ease-out]',
+    },
+  },
+  defaultVariants: {
+    zType: 'default',
+    zShape: 'default',
+  },
+});
+export type B3ProgressBarVariants = VariantProps<typeof progressBarVariants>;
+
+```
+
