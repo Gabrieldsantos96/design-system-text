@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "concurrently \"npm run watch:files\" \"npm run generate:installation\" \"npx nx run web:serve --configuration=local --port=4222  \"",
+    "clean": "npx nx reset && npx rimraf node_modules dist --no-preserve-root --max-retries=3 --retry-delay=500 && npm install",
     "prepare": "husky",
     "build": "node apps/web/update-routes.mjs && npx nx run web:build --configuration=production",
     "build:cli": "npx nx run cli:build",
@@ -36,6 +37,7 @@
     "@angular/router": "20.3.7",
     "@angular/ssr": "20.3.7",
     "@antfu/ni": "^26.1.0",
+    "@primeuix/themes": "^1.2.5",
     "@shikijs/rehype": "^3.12.0",
     "@tailwindcss/postcss": "^4.1.16",
     "chalk": "^5.3.0",
@@ -54,6 +56,7 @@
     "ngx-sonner": "^3.1.0",
     "ora": "^8.1.1",
     "postcss": "^8.5.6",
+    "primeng": "^20.3.0",
     "prompts": "^2.4.2",
     "rehype-highlight": "^7.0.2",
     "rehype-pretty-code": "^0.14.1",

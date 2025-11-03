@@ -1,10 +1,13 @@
-import { provideHttpClient, withFetch } from '@angular/common/http';
-import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { providePrimeNG } from 'primeng/config';
+import { B3Preset } from "apps/web/src/styles";
 
 import { appRoutes } from './app.routes';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +22,20 @@ export const appConfig: ApplicationConfig = {
       }),
     ),
     provideHttpClient(withFetch()),
-    provideAnimations(),
+    provideAnimationsAsync(),
+    providePrimeNG({
+            theme: {
+              preset: B3Preset,
+              options: {
+                prefix: 'tw',
+                darkModeSelector: '.dark',
+                cssLayer: false,
+                transition: true,
+                root: ':root',
+                appendTo: 'head',
+                mediaQuery: false
+              }
+            }
+        })
   ],
 };

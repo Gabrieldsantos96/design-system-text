@@ -153,6 +153,17 @@
   --color-code-tab: var(--code-tab-button);
 }
 
+@layer primeng {
+  :root {
+    --p-border-radius-sm: calc(var(--radius) - .125rem);
+    --p-border-radius-md: var(--radius);
+    --p-border-radius-lg: calc(var(--radius) + .125rem);
+    --p-content-border-radius: var(--radius);
+    --p-focus-ring-width: 0;
+    --p-focus-ring-shadow: 0 0 0 .5rem var(--background), 0 0 0 .25rem var(--ring);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
