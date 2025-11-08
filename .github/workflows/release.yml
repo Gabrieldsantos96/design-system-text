@@ -26,8 +26,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.email "p-gsantos@b3sa.com.br"
-          git config --global user.name "p-gsantos"
+          git config --global user.email "b3.adm@gmail.com"
+          git config --global user.name "B3UI Bot"
 
       - name: Install dependencies
         run: npm ci
